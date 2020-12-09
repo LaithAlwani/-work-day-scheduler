@@ -1,0 +1,32 @@
+.jumbotron{
+    border-bottom: 3px black solid;
+    background-color: greenyellow;
+    color: hotpink;
+}
+.row{
+    margin-bottom: 0.25rem;
+    
+}
+.time-slot{
+    padding: 15px !important;  /*to over ride boot strap no gutters*/
+    text-align: end;
+}
+.textarea{
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+.past{
+    background-color: rgba(153, 148, 148, 0.24);
+}
+
+
+.btn{
+    height: 100%;
+    border-radius: 0; 
+}
+
+.time-slot{
+    border-top: dashed 1px gray;
+    margin-bottom:;
+}
