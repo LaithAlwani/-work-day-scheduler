@@ -2,12 +2,14 @@
 
 // day object that has a date, array of time objects = to data id's , each time object has an event 
 
-var day = [
-    timeSlot = {
-        time: String,
-        event: String
-    }
-]
+var timeSlot = {
+    id: Number,
+    time: String,
+    event: String
+}
+    
+    
+
 
 var now  = moment();
 
@@ -23,24 +25,25 @@ function init(){
     var row  = $("<div>");
     row.addClass("row no-gutters");
         var timeCol = $("<div>");
-        timeCol.addClass("col-1 time-slot");
+        timeCol.addClass("col-md-1 time-slot");
             var timeSpan = $("<span>");
             timeSpan.addClass("time-text");
             timeSpan.text(formatTime(i))
         timeCol.append(timeSpan);
         
         var eventCol= $("<div>");
-        eventCol.addClass("col-10 event");
+        eventCol.addClass("col-md-10 event");
             var eventText = $("<textarea>");
             eventText.addClass("textarea");
             
         eventCol.append(eventText);    
 
         var btnCol =$("<div>");
-        btnCol.addClass("col-1");
+        btnCol.addClass("col-md-1");
             var button = $("<button>");
             button.addClass("btn btn-primary btn-block");
             button.text("save");
+            button.attr("data-id",i-9);
         btnCol.append(button);
         if(now.hour()>i){
             eventText.addClass("past");
@@ -48,7 +51,7 @@ function init(){
             button.attr("disabled","disabled")
         }
     row.append(timeCol,eventCol,btnCol)
-    row.attr("data-id",i-9);
+    
 
     $(".container").append(row);       
     
@@ -65,4 +68,10 @@ function formatTime(time){
 }
 
 init();
+
+$(".btn").click(function(){
+    var buttonId = ($(this).attr("data-id")); 
+})
+
+
 

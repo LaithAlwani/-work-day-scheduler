@@ -1,7 +1,8 @@
 .jumbotron{
     border-bottom: 3px black solid;
+    border-radius: 0;
     background-color: greenyellow;
-    color: hotpink;
+    
 }
 .row{
     margin-bottom: 0.25rem;
@@ -15,6 +16,7 @@
     width: 100%;
     height: 100%;
     resize: none;
+    /* border: solid 1px rgba(0, 0, 0, 0.356); */
 }
 .past{
     background-color: rgba(153, 148, 148, 0.24);
@@ -28,5 +30,16 @@
 
 .time-slot{
     border-top: dashed 1px gray;
-    margin-bottom:;
+
 }
+
+@media only screen and (max-width:768px){
+    .row{
+        border-bottom: dashed 1px gray;
+        padding-bottom: 1rem;
+    }
+    .time-slot{
+        text-align: center;
+        border-top: none;
+    }
+} 
