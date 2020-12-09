@@ -41,11 +41,11 @@ function init(){
             button.attr("data-id",i-9);
         btnCol.append(button);
         if(now.hour()>i){
-            // eventText.addClass("past");
-            // eventText.attr("disabled","disabled");
-            // button.attr("disabled","disabled")
+            eventText.addClass("past");
+            eventText.attr("disabled","disabled");
+            button.attr("disabled","disabled")
         }else if(now.hour() == i){
-            // eventText.addClass("present");
+            eventText.addClass("present");
         }else{
             eventText.addClass("future");
         }
