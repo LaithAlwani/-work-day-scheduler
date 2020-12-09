@@ -20,14 +20,14 @@ function init(){
     var row  = $("<div>");
     row.addClass("row no-gutters");
         var timeCol = $("<div>");
-        timeCol.addClass("col-2 time-slot mb-2");
+        timeCol.addClass("col-md-2 col-3 time-slot mb-2");
             var timeSpan = $("<span>");
             timeSpan.addClass("time-text");
             timeSpan.text(formatTime(i))
         timeCol.append(timeSpan);
         
         var eventCol= $("<div>");
-        eventCol.addClass("col-md-9 col-10 event");
+        eventCol.addClass("col-9 event");
             var eventText = $("<textarea>");
             eventText.addClass("textarea");
             eventText.attr("id",i-9);
