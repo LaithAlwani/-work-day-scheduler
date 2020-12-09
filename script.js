@@ -20,21 +20,21 @@ function init(){
     var row  = $("<div>");
     row.addClass("row no-gutters");
         var timeCol = $("<div>");
-        timeCol.addClass("col-md-1 time-slot");
+        timeCol.addClass("col-2 time-slot mb-2");
             var timeSpan = $("<span>");
             timeSpan.addClass("time-text");
             timeSpan.text(formatTime(i))
         timeCol.append(timeSpan);
         
         var eventCol= $("<div>");
-        eventCol.addClass("col-md-10 event");
+        eventCol.addClass("col-md-9 col-10 event");
             var eventText = $("<textarea>");
             eventText.addClass("textarea");
             eventText.attr("id",i-9);
         eventCol.append(eventText);    
 
         var btnCol =$("<div>");
-        btnCol.addClass("col-md-1");
+        btnCol.addClass("col-md-1 col-12");
             var button = $("<button>");
             button.addClass("btn btn-primary btn-block");
             button.text("save");
