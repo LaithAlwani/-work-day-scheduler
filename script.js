@@ -4,12 +4,16 @@
 var dataArray = [];
 
 var now = moment();
-$("#date").css("font-weight", "bold");
+//time and date  from moment js
+$("#date-time").css("font-weight", "bold");
 function update() {
-  $("#date").text(moment().format(" MMMM do, YYYY hh:mm:ss A"));
+  $("#date-time").text(moment().format(" MMM Do, YYYY hh:mm:ss A"));
 }
 setInterval(update, 1000);
 
+$("#date").text(now.format("MMM Do, YYYY"));
+
+//load data from local storage
 function loadData() {
   dataArray = JSON.parse(localStorage.getItem("data"));
   if (dataArray === null) {
@@ -21,8 +25,7 @@ function loadData() {
 //this function sets up the page as intended for the view
 function init() {
   loadData();
-  for (var i = 0; i <= 8; i++) {
-    //9 time slots
+  for (var i = 0; i <= 8; i++) {    //9 time slots
     // appending div and spans and adding classes and attributes
     var textAreaItem = dataArray.find(function (item) {
       return item.id == i;
@@ -30,17 +33,15 @@ function init() {
     var row = $("<div>");
     row.addClass("row no-gutters");
         var timeCol = $("<div>");
-        timeCol.addClass("col-md-2 col-3 time-slot mb-2");
+        timeCol.addClass("col-md-2 col-4 time-slot mb-2");
             var timeSpan = $("<span>");
-            timeSpan.addClass("time-text");
-            timeSpan.attr("dataTime", i + 9);
             timeSpan.text(formatTime(i + 9));
         timeCol.append(timeSpan);
 
     var eventCol = $("<div>");
-    eventCol.addClass("col-md-9 col-10 event");
+    eventCol.addClass("col-md-9 col-8  event");
         var eventText = $("<textarea>");
-        eventText.addClass("textarea");
+        // eventText.addClass("textarea");
         eventText.attr("id", i);
         eventText.val(textAreaItem && textAreaItem.value);
     eventCol.append(eventText);
@@ -48,20 +49,28 @@ function init() {
     var btnCol = $("<div>");
     btnCol.addClass("col-md-1 col-12");
         var button = $("<button>");
-        button.addClass("btn btn-primary btn-block");
+        button.addClass("btn btn-block");
         button.text("save");
         button.attr("data-id", i);
     btnCol.append(button);
-
-    if (now.hour() > i + 9) {
-      eventText.addClass("past");
-      eventText.attr("disabled","disabled");
-      button.css("display","none")
-    } else if (now.hour() == i + 9) {
-      eventText.addClass("present");
-    } else {
+    //check if it's past 6pm
+    if(now.hour() > 17){
+      //it's now the next day
+      $("#date").text(moment().add(1,"days").format("MMM Do, YYYY"));
       eventText.addClass("future");
+      
+    }else{
+      if (now.hour() > i + 9) {
+        eventText.addClass("past");
+        eventText.attr("disabled","disabled");
+        // button.css("display","none")
+      } else if (now.hour() == i + 9) {
+        eventText.addClass("present");
+      } else {
+        eventText.addClass("future");
+      }
     }
+    //append all elements
     row.append(timeCol, eventCol, btnCol);
     $(".container").append(row);
   }
@@ -79,7 +88,7 @@ function formatTime(time) {
 
 function buttonClick() {
   var buttonId = $(this).attr("data-id");
-  var textAreaId = $(".textarea");
+  var textAreaId = $("textarea");
   for (var i = 0; i < textAreaId.length; i++) {
     if (textAreaId[i].id === buttonId) {
       if (typeof checkId(buttonId) === "undefined") {
@@ -105,15 +114,14 @@ function checkId(id) {
   }
 }
 
-
 //save function
 function saveNewItem(id, value) {
-  alert("saving as a new item");
   dataArray.push({
     id: id,
     value: value,
   });
 }
+
 //replace function
 function replaceItem(index, id, value) {
   dataArray.splice(index, 1);

@@ -1,49 +1,80 @@
+
+/* Source Sans Pro font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+body{
+    background-color: #DDDDDD;
+    font-family: 'Merriweather', serif;
+}
+
 .jumbotron{
     border-bottom: 3px black solid;
     border-radius: 0;
-    background-color: rgba(161, 223, 133,0.7);
+    background-color:  #3cdbd381;
+    position:relative;
     
+}
+.jumbotron h1{
+    padding-top: 20px;
+}
+.jumbotron p{
+    margin-bottom: 0;
 }
 .row{
     margin-bottom: 0.25rem;
     
 }
 .time-slot{
-    padding: 15px !important;  /*to over ride boot strap no gutters*/
+    padding: 20px !important;  /*to over ride boot strap no gutters*/
     text-align: end;
 }
-.textarea{
+textarea{
     width: 100%;
     height: 100%;
     resize: none;
+    padding-left: 10px;
+    padding-top: 5px;
     /* border: solid 1px rgba(0, 0, 0, 0.356); */
+}
+#date-time{
+    position: absolute;
+    top:1rem;
+    left:1.5rem;
+}
+
+#date{
+    font-weight: bold;
 }
 
 .past{
-    background-color: rgb(248, 123, 123);
+    background-color: #FF8360;
     opacity: 0.5;
 }
 .present{
-    background-color: rgba(200, 206, 206,0.5);
+    background-color: #e8e28880;
     /* opacity: 0.5; */
 }
 .present:hover{
-    background-color: rgba(200, 206, 206);
+    background-color: #E8E288;
 }
 .future{
-    background-color: rgb(161, 223, 133, 0.7);
+    background-color:#7dce8286;
 }
 .future:hover{
-    background-color: rgb(161, 223, 133);
+    background-color:#7DCE82;
 }
 .future:focus{
-    background-color: rgb(161, 223, 133);
+    background-color: #7DCE82;
 }
 
 
 .btn{
     height: 100%;
-    border-radius: 0; 
+    border-radius: 0;
+    background-color: #3CDBD381; 
+}
+.btn:hover{
+    background-color: #3CDBD3
 }
 
 .time-slot{
@@ -59,5 +90,6 @@
     .time-slot{
         text-align: center;
         border-top: none;
+        padding-right: 10px;
     }
 } 
