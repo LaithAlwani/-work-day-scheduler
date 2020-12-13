@@ -10,4 +10,6 @@ each time allows the user to save a reminder btween 9am and 5pm.
 
 ![](assets/images/calender.png)
 
-vist ["Work day scheduler"](https://laithalwani.github.io/work-day-scheduler) to give it a try
+vist ["Work day scheduler"](https://laithalwani.github.io/work-day-scheduler) to give it a try.
+
+This website uses an **MIT license**.
