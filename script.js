@@ -11,11 +11,10 @@ function update() {
 }
 setInterval(update, 1000);
 
-$("#date").text(now.format("MMM Do, YYYY"));
-
 //load data from local storage
 function loadData() {
   dataArray = JSON.parse(localStorage.getItem("data"));
+  console.log(dataArray);
   if (dataArray === null) {
     dataArray = [];
   }
@@ -53,23 +52,17 @@ function init() {
         button.text("save");
         button.attr("data-id", i);
     btnCol.append(button);
-    //check if it's past 6pm
-    if(now.hour() > 17){
-      //it's now the next day
-      $("#date").text(moment().add(1,"days").format("MMM Do, YYYY"));
+    //checking the time right now
+    if (now.hour() > i + 9) { // checking if time is greater than index plus 9 hours
+      eventText.addClass("past");
+      eventText.attr("disabled","disabled");
+      button.css("display","none")
+    } else if (now.hour() == i + 9) { //chekcing if time is qual to index plus 9 hours
+      eventText.addClass("present");
+    } else {
       eventText.addClass("future");
-      
-    }else{
-      if (now.hour() > i + 9) {
-        eventText.addClass("past");
-        eventText.attr("disabled","disabled");
-        // button.css("display","none")
-      } else if (now.hour() == i + 9) {
-        eventText.addClass("present");
-      } else {
-        eventText.addClass("future");
-      }
     }
+    
     //append all elements
     row.append(timeCol, eventCol, btnCol);
     $(".container").append(row);
@@ -90,13 +83,17 @@ function buttonClick() {
   var buttonId = $(this).attr("data-id");
   var textAreaId = $("textarea");
   for (var i = 0; i < textAreaId.length; i++) {
+    //if textarea's id is equal to button id
     if (textAreaId[i].id === buttonId) {
+      //check if reutrn type to method check id is undifined
       if (typeof checkId(buttonId) === "undefined") {
+        //save a new item
         saveNewItem(buttonId, textAreaId[i].value);
       } else {
+        //replace item
         replaceItem(checkId(buttonId), buttonId, textAreaId[i].value);
       }
-      console.log(dataArray);
+      //save data to local storage
       localStorage.setItem("data", JSON.stringify(dataArray));
     }
   }
@@ -104,11 +101,8 @@ function buttonClick() {
 
 //check if in data function and returns the index if found
 function checkId(id) {  
-  // dataArray.find(function(item){
-  // })
   for (var i = 0; i < dataArray.length; i++) {
     if (dataArray[i].id.includes(id)) {
-      
       return i;
     }
   }

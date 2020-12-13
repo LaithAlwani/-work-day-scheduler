@@ -3,15 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 
 body{
-    background-color: #DDDDDD;
+    background-color: whitesmoke;
     font-family: 'Merriweather', serif;
 }
-
+/* header Start */
 .jumbotron{
     border-bottom: 3px black solid;
     border-radius: 0;
-    background-color:  #3cdbd381;
+    background-color:  #b1bebec5;
     position:relative;
+    padding: 20px;
     
 }
 .jumbotron h1{
@@ -20,35 +21,32 @@ body{
 .jumbotron p{
     margin-bottom: 0;
 }
-.row{
-    margin-bottom: 0.25rem;
-    
+
+#date-time{
+    position: absolute;
+    top:0 ;
+    left:1.5rem;
 }
+/* Header Ends */
+
 .time-slot{
-    padding: 20px !important;  /*to over ride boot strap no gutters*/
+    padding-right: 20px !important;  /*to over ride boot strap no gutters*/
     text-align: end;
+    border-top: dashed 1px gray;
 }
 textarea{
     width: 100%;
     height: 100%;
     resize: none;
     padding-left: 10px;
-    padding-top: 5px;
-    /* border: solid 1px rgba(0, 0, 0, 0.356); */
 }
-#date-time{
-    position: absolute;
-    top:1rem;
-    left:1.5rem;
-}
-
-#date{
-    font-weight: bold;
-}
-
+/* classes used diffretaite between past, present and future */
 .past{
-    background-color: #FF8360;
-    opacity: 0.5;
+    background-color: #ff826080;
+    /* opacity: 0.5; */
+}
+.past:hover{
+    background-color: #ff8260;
 }
 .present{
     background-color: #e8e28880;
@@ -66,30 +64,29 @@ textarea{
 .future:focus{
     background-color: #7DCE82;
 }
-
-
+/* Button's styling */
 .btn{
     height: 100%;
     border-radius: 0;
-    background-color: #3CDBD381; 
+    background-color: #b1bebec5; 
+    border-bottom: dashed 1px rgb(141, 141, 141);
 }
 .btn:hover{
-    background-color: #3CDBD3
+    background-color: #b1bebe;
 }
 
-.time-slot{
-    border-top: dashed 1px gray;
-
-}
-
+/* Media Queries */
 @media only screen and (max-width:768px){
-    .row{
-        border-bottom: dashed 1px gray;
-        padding-bottom: 1rem;
+    #date-time{
+        top:0.5rem;
+        left: 50%;
+        margin-left: -107px;
     }
+    
     .time-slot{
         text-align: center;
-        border-top: none;
-        padding-right: 10px;
+    }
+    .btn{
+        border-bottom: none;
     }
 } 
