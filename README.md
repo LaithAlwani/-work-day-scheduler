@@ -10,6 +10,13 @@ each time allows the user to save a reminder btween 9am and 5pm.
 
 ![](assets/images/calender.png)
 
+## Technologies:
+* Html
+* CSS / Bootstrap 4
+* JavaScript
+
 vist ["Work day scheduler"](https://laithalwani.github.io/work-day-scheduler) to give it a try.
 
-This website uses an **MIT license**.
+please contact me at laithalwani@gmail.com for further information.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
